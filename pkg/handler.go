@@ -1,13 +1,14 @@
 package pkg
 
 import (
-	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"github.com/google/generative-ai-go/genai"
 	"io"
 	"log"
 	"net/http"
 	"strings"
 	"time"
+
+	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
+	"github.com/google/generative-ai-go/genai"
 )
 
 func handleDefaultCommand(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
@@ -22,37 +23,50 @@ func handleStartCommand(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
 	sendMessage(bot, msg)
 }
 
-func handleClearCommand(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
+func handleClearCommand(update tgbotapi.Update, bot *tgbotapi.BotAPI, verbose bool) {
 	chatID := update.Message.Chat.ID
 	textSessionID := generateSessionID(chatID, TextModel)
 
-	info := "no chat session found, just send text or image"
 	if ok := clearChatSession(textSessionID); ok {
-		info = `Chat session cleared.`
+		chatSessionMap.Delete(chatID)
 	}
 
-	msg := tgbotapi.NewMessage(chatID, info)
-	sendMessage(bot, msg)
+	if verbose == true {
+		info := `Chat session cleared.`
+		msg := tgbotapi.NewMessage(chatID, info)
+		sendMessage(bot, msg)
+	}
 }
 
 func handleHelpCommand(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
 	helpInfo := `Commands: 
-    /clear - Clear chat session
-    /help - Get help info
+/clear - Clear chat session
+/help - Get help info
 Just send text or image to get response`
 	msg := tgbotapi.NewMessage(update.Message.Chat.ID, helpInfo)
 	sendMessage(bot, msg)
 }
 
-func handleTextMessage(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
+func handleTextMessage(update tgbotapi.Update, bot *tgbotapi.BotAPI, something int) (bool, int) {
 	chatID := update.Message.Chat.ID
 
-	initMsgID, errFlag := instantReply(update, bot, chatID)
-	if errFlag {
-		return
+	// Initialize a flag to track the first message
+	if _, ok := chatSessionMap.Load(chatID); !ok {
+		chatSessionMap.Store(chatID, true) // Mark as first message processed
 	}
 
-	generateResponse(bot, chatID, initMsgID, TextModel, genai.Text(update.Message.Text))
+	errFlag := false
+	initMsgID := something
+
+	if something == 0 {
+		initMsgID, errFlag = instantReply(update, bot, chatID)
+	}
+
+	if errFlag {
+		return true, initMsgID
+	}
+
+	return generateResponse(bot, chatID, initMsgID, TextModel, genai.Text(update.Message.Text)), initMsgID
 }
 
 func handlePhotoMessage(update tgbotapi.Update, bot *tgbotapi.BotAPI) {
@@ -102,7 +116,7 @@ func handlePhotoPrompts(update tgbotapi.Update, bot *tgbotapi.BotAPI, prompts *[
 
 	textPrompts := update.Message.Caption
 	if textPrompts == "" {
-		textPrompts = "Analyse the image and Describe it in Chinese"
+		textPrompts = "Analyse the image and Describe it in English, give any relavent insight"
 	}
 	*prompts = append(*prompts, genai.Text(textPrompts))
 	return false
@@ -156,26 +170,21 @@ func sendMessage(bot *tgbotapi.BotAPI, msg tgbotapi.MessageConfig) {
 	}
 }
 
-func generateResponse(bot *tgbotapi.BotAPI, chatID int64, initMsgID int, modelName string, parts ...genai.Part) {
+func generateResponse(bot *tgbotapi.BotAPI, chatID int64, initMsgID int, modelName string, parts ...genai.Part) bool {
 	response := getModelResponse(chatID, modelName, parts)
+
+	if strings.Contains(response, "googleapi: Error") {
+		return false
+	} else if response == "" {
+		return false
+	}
 
 	// Send the response back to the user.
 	edit := tgbotapi.NewEditMessageText(chatID, initMsgID, response)
-	edit.ParseMode = tgbotapi.ModeMarkdownV2
+	//edit.ParseMode = tgbotapi.ModeHTML
 	edit.DisableWebPagePreview = true
-	sendMessageWithRetry(bot, edit, tgbotapi.ModeMarkdownV2)
+	bot.Send(edit)
 
 	time.Sleep(200 * time.Millisecond)
-}
-
-func sendMessageWithRetry(bot *tgbotapi.BotAPI, edit tgbotapi.EditMessageTextConfig, parseMode string) {
-	_, sendErr := bot.Send(edit)
-	if sendErr != nil {
-		log.Printf("Error sending message in %s: %v\n", parseMode, sendErr)
-		if parseMode == tgbotapi.ModeMarkdownV2 {
-			log.Printf("Retrying in plain text\n")
-			edit.ParseMode = ""
-			sendMessageWithRetry(bot, edit, "")
-		}
-	}
+	return true
 }

@@ -27,6 +27,10 @@ func StartBot() {
 	// Set commands
 	_, _ = bot.Request(tgbotapi.NewSetMyCommands([]tgbotapi.BotCommand{
 		{
+			Command:     StartCommand,
+			Description: "Invoke Gemini",
+		},
+		{
 			Command:     ClearCommand,
 			Description: "Clear previous contents and start a new chat",
 		},
@@ -61,7 +65,7 @@ func StartBot() {
 			case StartCommand:
 				handleStartCommand(update, bot)
 			case ClearCommand:
-				handleClearCommand(update, bot)
+				handleClearCommand(update, bot, true)
 			case HelpCommand:
 				handleHelpCommand(update, bot)
 			default:
@@ -70,9 +74,17 @@ func StartBot() {
 		} else if update.Message.Photo != nil {
 			handlePhotoMessage(update, bot)
 		} else if update.Message.Text != "" {
-			handleTextMessage(update, bot)
+			var result bool
+			var initMsgID int
+			result, initMsgID = handleTextMessage(update, bot, 0)
+			if !result {
+				for result == false {
+					log.Printf("Retrying prompt...")
+					handleClearCommand(update, bot, false)
+					result, initMsgID = handleTextMessage(update, bot, initMsgID)
+				}
+			}
 		}
-
 	}
 }
 
