@@ -78,6 +78,7 @@ func StartBot() {
 			var initMsgID int
 			result, initMsgID = handleTextMessage(update, bot, 0)
 			if !result {
+				log.Printf("Retrying prompt...")
 				handleClearCommand(update, bot, false)
 				handleTextMessage(update, bot, initMsgID)
 			}

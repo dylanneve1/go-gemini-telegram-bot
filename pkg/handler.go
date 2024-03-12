@@ -206,7 +206,7 @@ func generateResponse(bot *tgbotapi.BotAPI, chatID int64, initMsgID int, modelNa
 	edit.DisableWebPagePreview = true
 	sendMessageWithRetry(bot, edit, "")
 
-	time.Sleep(1000 * time.Millisecond)
+	time.Sleep(200 * time.Millisecond)
 	return true
 }
 
