@@ -16,6 +16,9 @@ const (
 
 func StartBot() {
 	bot, err := tgbotapi.NewBotAPI(config.Env.BotToken)
+
+	var previousResponse string = ""
+
 	if err != nil {
 		log.Panic(err)
 	}
@@ -76,11 +79,15 @@ func StartBot() {
 		} else if update.Message.Text != "" {
 			var result bool
 			var initMsgID int
-			result, initMsgID = handleTextMessage(update, bot, 0)
+			var context string
+			result, initMsgID, context = handleTextMessage(update, bot, 0, previousResponse)
+			if context != "" {
+				previousResponse = context
+			}
 			if !result {
 				log.Printf("Retrying prompt...")
 				handleClearCommand(update, bot, false)
-				handleTextMessage(update, bot, initMsgID)
+				handleTextMessage(update, bot, initMsgID, previousResponse)
 			}
 		}
 
