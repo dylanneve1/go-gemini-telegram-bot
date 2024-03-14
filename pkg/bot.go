@@ -19,6 +19,8 @@ func StartBot() {
 
 	var previousResponse string = ""
 
+	var longTermMemory string = ""
+
 	if err != nil {
 		log.Panic(err)
 	}
@@ -80,17 +82,27 @@ func StartBot() {
 			var result bool
 			var initMsgID int
 			var context string
-			result, initMsgID, context = handleTextMessage(update, bot, 0, previousResponse)
+			var ltm_addition string
+			result, initMsgID, context, ltm_addition = handleTextMessage(update, bot, 0, previousResponse, longTermMemory)
 			if context != "" {
 				previousResponse = context
 			}
+			if ltm_addition != "" {
+				longTermMemory = longTermMemory + ltm_addition + " "
+			}
+			log.Printf(longTermMemory)
 			if !result {
-				log.Printf("Retrying prompt...")
-				handleClearCommand(update, bot, false)
-				handleTextMessage(update, bot, initMsgID, previousResponse)
+				for (result == false) {
+					log.Printf("Retrying prompt...")
+					handleClearCommand(update, bot, false)
+					result, initMsgID, context, ltm_addition = handleTextMessage(update, bot, initMsgID, previousResponse, longTermMemory)
+					if ltm_addition != "" {
+						longTermMemory = longTermMemory + ltm_addition + " "
+					}
+					log.Printf(longTermMemory)
+				}
 			}
 		}
-
 	}
 }
 
