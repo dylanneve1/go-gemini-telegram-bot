@@ -1,0 +1,108 @@
+commit f1434d59c41ce9463b2bb3023aa5b9c1a7508521
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 21 16:19:05 2024 +0000
+
+    Remove some code
+
+commit 49ae59fadf1af803dd8e61b73657d0ade4f8d3f3
+Author: Dylan Neve <NEVED@tcd.ie>
+Date:   Wed Feb 21 09:39:44 2024 +0000
+
+    21/02/2024 PRELAB
+    
+    Networking and miscellaneous fixes
+
+commit 1ce3a958cd187949e82571657d8c3f538b0d1d67
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Feb 19 15:52:59 2024 +0000
+
+    WiFiManager: initial wireless communications
+
+commit 07ed322a871959d84b932afc2003d3652525f44d
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Feb 19 15:11:35 2024 +0000
+
+    Refactor ultrasonic sensor code
+
+commit 80605f85b947048fe42ba4a5d40346b8646b889f
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Feb 19 14:20:40 2024 +0000
+
+    made changes for ultrasonics
+
+commit 05c92e04d7d3950ebe6b75f7c3ae01665ecff702
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Feb 19 14:30:01 2024 +0000
+
+    update lowest speed
+
+commit 3bcc5c4ac1fbad8f59389c5bbac3ccfc56b06e5e
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Feb 15 13:52:08 2024 +0000
+
+    SpudArduino: repair the hit system
+
+commit 46048e57225c3d731565eb55cb9a7f2d789b0c9d
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 14 16:25:40 2024 +0000
+
+    Lab 14/2/2024
+
+commit 68c7998bbe993392c32c541f9dc86ee4a93df779
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 14 10:46:47 2024 +0000
+
+    SensorManager: add integration to GuidanceManager
+    
+    To determine the amount of hits in a specified timeframe
+
+commit c6d270cfecfcf6ba11a3f512d04de13e459cd9b4
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 14 09:55:12 2024 +0000
+
+    SpudArduino: Use millis for the global time not int
+
+commit 46d0531db856e88d109afeaea9fd7b3130442c64
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Feb 12 15:21:32 2024 +0000
+
+    12/2/2024 lab
+
+commit 967dc68d181e05a8186466640aa23858d5cc7395
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Fri Feb 9 14:28:44 2024 +0000
+
+    SpudArduino: store the time since turned on
+
+commit b383066dd6b6e9fca566566763c290553f1545a9
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Feb 8 22:40:48 2024 +0000
+
+    SpudArduino: MotorManager: add basic configuration for motor
+    
+    - Supports states like FORWARD BACKWARDS and OFF.
+    - Can control speed which can be updated even if state hasn't changed using a Boolean.
+
+commit bdbe81d734cf2b2ff4627fc06af6dbf076912264
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 7 22:26:01 2024 +0000
+
+    SpudArduino: initialise SensorManager and MotorManager
+
+commit e7e7df4fe9cf000da26c152668e2eb16e65bbec0
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 7 21:57:58 2024 +0000
+
+    SpudArduino: add support for basic motor control
+
+commit 64f6547dd83f2a6ab5a4b3178cc9e930739a5774
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 7 21:00:28 2024 +0000
+
+    SpudArduino: upload initial code
+
+commit 8b14fcaa31429c0fb1c11fc1f08155f19f9f61c8
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 7 20:59:50 2024 +0000
+
+    Initial commit
