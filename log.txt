@@ -1,8 +1,259 @@
-commit f1434d59c41ce9463b2bb3023aa5b9c1a7508521
+commit 7f59316528a63d64ee19c4518d8dd4d6863c4a21
 Author: Dylan Neve <dylanneve1@gmail.com>
-Date:   Wed Feb 21 16:19:05 2024 +0000
+Date:   Wed Apr 10 12:52:39 2024 +0100
 
-    Remove some code
+    stop the motors when WiFi command is recieved
+
+commit 7a0117a34c85f6dabfe7f93be5f9912c93d34907
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Apr 9 13:19:48 2024 +0100
+
+    Remove excess Serial logging and print state on LED matrix
+    
+    fixup more stuff
+
+commit f6f183de26b63de52f4371837b6d3663110a0d8c
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Apr 8 14:10:06 2024 +0100
+
+    Changes made in 8/4/2024 Lab
+
+commit 041aac87ecde07f8827123362f006f166aab9f1b
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Apr 8 12:19:56 2024 +0100
+
+    Update SensorManager.cpp
+
+commit ada12efc024a97e1a388b63923de0d2565d2ade7
+Merge: 42a839e 56a9a69
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Apr 8 12:19:32 2024 +0100
+
+    Merge branch 'silver' of https://github.com/dylanneve1/SpudArduino into silver
+
+commit 42a839e1bc782736a9ab38227f9a1f718765fd4c
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Apr 8 12:19:14 2024 +0100
+
+    testing different split string
+
+commit 56a9a6995d54c0523bd4891a00a7695fc21e9a32
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Apr 3 14:35:29 2024 +0100
+
+    save
+
+commit dfeeffc8fd1532a3cf748bd67b0c1e21afd99e23
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Apr 3 13:00:49 2024 +0100
+
+    3/4/2024
+
+commit 59494cf9a96d159af71009cf35d888cbeabcd5e7
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Apr 3 11:03:38 2024 +0100
+
+    test
+
+commit 5ff939eac7a5091fbd5126fae6d9e20440f580e9
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Apr 3 10:15:10 2024 +0100
+
+    ds
+
+commit f36faa9f2df910858f3b5edafe2e66204ac863ee
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Apr 2 18:45:26 2024 +0100
+
+    Increase PID threshold and try to reduce ultrasonic error
+
+commit 88f5f6002660560ca5064bbc5428e057807a57c5
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Apr 2 18:21:20 2024 +0100
+
+    pass avg v and error to processing
+
+commit 7315bcd0c30dd0deaafc09b40f4cf8fdcac58680
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Apr 2 11:52:26 2024 +0100
+
+    2/4/2024
+
+commit cd2bae099a7d3043d9fa8d7c00261aa4ebed74df
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Mon Apr 1 14:20:25 2024 +0100
+
+    fixup buggy speed calculation
+
+commit 3fc124c759688e69616a680da692a11e7b896aea
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Mar 28 16:38:36 2024 +0000
+
+    wad
+
+commit cbfd2a94f5d54a2142cb1fb1add26c6fb219df09
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Thu Mar 28 16:16:50 2024 +0000
+
+    manual + PID complete
+
+commit 058f8d0fe986b18b8d6e89a0f45ba2769a1187a7
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Mar 28 15:42:04 2024 +0000
+
+    allow disabling wifi
+
+commit 618929df2a6317f3ae2c06af8b125f1a687686d3
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Mar 28 15:24:28 2024 +0000
+
+    tidy up
+
+commit 34195303bab1b07f8122e4a8a6b178dd9e8ab742
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Mar 28 14:58:32 2024 +0000
+
+    Clean-up WiFi a bit
+
+commit 4522097516dd163cd6adec465da8c3c91434c64a
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Mar 28 14:50:49 2024 +0000
+
+    Combine WiFi setup functions
+
+commit 27f160bb2d231f300e71a1140b2fd60e3b0215f1
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Thu Mar 28 14:47:19 2024 +0000
+
+    fix pid
+
+commit 98d2d34cf235b8ca68da308ea451b9af6fd2ddb4
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 17:49:07 2024 +0000
+
+    Update SensorManager.cpp
+
+commit d3277d0bc9b770cef84ed745e2d71f2f35728a67
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 17:17:27 2024 +0000
+
+    add check for pidSpeed
+
+commit 9a7d2dd0a93b5cc0ef3fee924750ef49e0286af4
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 17:14:18 2024 +0000
+
+    Add align buggy speed
+
+commit 223c844f7320ded46cad468b1e93cc1dc0b43ab0
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 17:07:28 2024 +0000
+
+    Calculate PID coefficient
+
+commit d7be58eed40f6fcc0227c5373345df083e23f396
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 16:45:58 2024 +0000
+
+    Tidy up sensors code a bit
+
+commit 8618a158b5d337123c1651ba761859bf4693e55d
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 16:38:11 2024 +0000
+
+    check avg_v isnt null
+
+commit 0ff22e082aa564efc56c1eaea59d9fd62f3a53c0
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 16:27:02 2024 +0000
+
+    Add avg_v calculation
+
+commit 9702e3fbc1f87df75da177f2a1b569339e456341
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 10:30:16 2024 +0000
+
+    Spin back during turn
+
+commit cf18f736f868ae32c7fb998529176aa3dd3f17f5
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Mar 27 10:02:11 2024 +0000
+
+    fix formatting
+
+commit 8d6244ae684dd4af8f7198e7eb55f634f47d50c8
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Mar 25 15:54:10 2024 +0000
+
+    made it turn
+
+commit e45ddadd15cb27c8f0467d94e033d2ae011411d1
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Mar 11 14:48:34 2024 +0000
+
+    changing the distance
+
+commit 1be84bd2ae3b3fd59295ae69765e0d20a8ee5c98
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Wed Feb 28 14:45:58 2024 +0000
+
+    correct distance travelled
+
+commit dfa3f7e8721b5e6f582ed30c074e2532e5a2aa70
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Wed Feb 28 14:34:25 2024 +0000
+
+    Done
+
+commit 993fec42e7b217ba9360a5f51bb88210c79518de
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 28 13:53:38 2024 +0000
+
+    Pass the actual motor speed to processing!
+    
+    Stop using dummy value of 100, now it will show when motor is disabled or enabled
+
+commit 143049e4f8f4dce7287219a033b11820ab271b4f
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 28 13:47:22 2024 +0000
+
+    measure left and right wheels seperately
+
+commit 618dcc7eadb4d4916cad59172d17ba489415d4b3
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Wed Feb 28 10:58:18 2024 +0000
+
+    Half the REVOLUTION_DISTANCE for each revolution
+
+commit 99161be1a9ba8012a27754344a28a1ea074e70d5
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Feb 27 13:02:46 2024 +0000
+
+    Initial interrupt implementation
+
+commit 0c1f5640c0b2b8dde2691513cf2a78daab14edbd
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Feb 27 12:38:25 2024 +0000
+
+    More cleanup
+
+commit a41e271a2d23f93fb06198e72d6a8ab4c15495c0
+Author: Dylan Neve <dylanneve1@gmail.com>
+Date:   Tue Feb 27 12:30:58 2024 +0000
+
+    Add some more comments and cleanup
+
+commit aa734629a2d498076ae71eabb0d30e5ee05fd620
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Feb 26 16:07:34 2024 +0000
+
+    final without encoder
+
+commit 6b20424c7a02696b91b58792a17965ccadec422d
+Author: uri3lrex <khanhe@tcd.ie>
+Date:   Mon Feb 26 11:16:50 2024 +0000
+
+    did wifi changes for on/off button
 
 commit 49ae59fadf1af803dd8e61b73657d0ade4f8d3f3
 Author: Dylan Neve <NEVED@tcd.ie>
