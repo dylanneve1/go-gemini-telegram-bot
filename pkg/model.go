@@ -14,8 +14,8 @@ import (
 )
 
 const (
-	TextModel   = "gemini-1.0-pro-latest"
-	VisionModel = "gemini-1.0-pro-vision-latest"
+	TextModel   = "gemini-1.5-pro"
+	VisionModel = "gemini-1.5-pro-vision"
 )
 
 var (
