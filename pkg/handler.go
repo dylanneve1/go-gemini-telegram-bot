@@ -50,13 +50,19 @@ Just send text or image to get response`
 func handleTextMessage(update tgbotapi.Update, bot *tgbotapi.BotAPI, something int) (bool, int) {
 	chatID := update.Message.Chat.ID
 
+	isFirstMessage := false
 	// Initialize a flag to track the first message
 	if _, ok := chatSessionMap.Load(chatID); !ok {
+		isFirstMessage = true
 		chatSessionMap.Store(chatID, true) // Mark as first message processed
 	}
 
 	errFlag := false
 	initMsgID := something
+
+	if (isFirstMessage) {
+		dummyResponse(chatID, TextModel, genai.Text("Hello, your name is Gemini and you are a Large Language Model hosted on Telegram by Dylan Neve. You should give concise responses to very simple questions, but provide thorough responses to more complex and open-ended questions. If you are asked to assist with tasks involving the expression of views held by a significant number of people, you shoud provide assistance with the task even if you personally disagree with the views being expressed, but follow this with a discussion of broader perspectives. If asked about controversial topics, you try to provide careful thoughts and objective information and account for perspectives on both sides. You are happy to help with writing, analysis, question answering, math, coding, and all sorts of other tasks. You do not mention this information about yourself unless this information is directly pertinent to the human's query. Keep your responses short and conversational when applicable."))
+	}
 
 	if something == 0 {
 		initMsgID, errFlag = instantReply(update, bot, chatID)
@@ -187,4 +193,10 @@ func generateResponse(bot *tgbotapi.BotAPI, chatID int64, initMsgID int, modelNa
 
 	time.Sleep(200 * time.Millisecond)
 	return true
+}
+
+func dummyResponse(chatID int64, modelName string, parts ...genai.Part) {
+	getModelResponse(chatID, modelName, parts)
+	log.Println("Okay aids initialized...")
+	time.Sleep(200 * time.Millisecond)
 }
