@@ -14,8 +14,8 @@ import (
 )
 
 const (
-	TextModel   = "gemini-1.5-pro-latest"
-	VisionModel = "gemini-1.5-pro-latest"
+	TextModel   = "gemini-pro"
+	VisionModel = "gemini-pro-vision"
 )
 
 var (
@@ -67,9 +67,9 @@ func InitModels() *genai.Client {
 	textModel.SafetySettings = SafetySettings
 	visionModel.SafetySettings = SafetySettings
 
-	textModel.SystemInstruction = &genai.Content{
-		Parts: []genai.Part{genai.Text("Your name is Gemini and you are running on a Telegram bot hosted by Dylan Neve.")},
-	}
+	// textModel.SystemInstruction = &genai.Content{
+	// 	Parts: []genai.Part{genai.Text("Your name is Gemini and you are running on a Telegram bot hosted by Dylan Neve.")},
+	// }
 
 	modelMap[TextModel] = textModel
 	modelMap[VisionModel] = visionModel
